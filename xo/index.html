@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Tic-tac-toe</title>
+
+    <!-- Author -->
+    <meta name="author" content="Daner SHARIFI">
+    <!-- Description -->
+    <meta name="description" content="Tic-tac-toe jeu de réflexion.">
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Tic-tac-toe</h1>
+    <div id="jeu" class="indisponible">
+        <div class="row">
+            <div class="case" id="case1"></div>
+            <div class="case" id="case2"></div>
+            <div class="case" id="case3"></div>
+        </div>
+        <div class="row">
+            <div class="case" id="case4"></div>
+            <div class="case" id="case5"></div>
+            <div class="case" id="case6"></div>
+        </div>
+        <div class="row">
+            <div class="case" id="case7"></div>
+            <div class="case" id="case8"></div>
+            <div class="case" id="case9"></div>
+        </div>
+    </div>
+    <div id="setup">
+        <div class="row">
+            <div class="modes">
+                <div class="mode">
+                    <input type="radio" name="mode" id="modeOrdinateur" value="1" checked>
+                    <label for="modeOrdinateur">Jouer contre l'ordinateur</label>
+                </div>
+                <div class="mode">
+                    <input type="radio" name="mode" id="modeEnLigne" value="2">
+                    <label for="modeEnLigne">Jouer en ligne</label>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="start">Commencer</button>
+                <button id="stop">Arrêter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="script.js"></script>
+</body>
+</html>

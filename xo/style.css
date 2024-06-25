@@ -1,0 +1,195 @@
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.row .col {
+    flex: 1;
+    margin: 0 10px;
+}
+
+#jeu {}
+
+/*
+=================================
+    Style de la grille de jeu
+=================================
+*/
+#jeu .case {
+    width: 128px;
+    height: 128px;
+    margin: 8px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+#jeu .case:hover {
+    background-color: #e0e0e0;
+}
+
+#jeu .case:active {
+    background-color: #d0d0d0;
+}
+
+/*
+=================================
+    Style des cases actives
+    => cases qui peuvent être jouées
+=================================
+*/
+#jeu .case.active {
+    background-color: #f0f0f0;
+}
+
+#jeu .case.active:hover,
+#jeu .case.active:active {
+    background-color: #f0f0f0;
+}
+
+/*
+=================================
+    Style des cases inactives
+    => partie qui n'a pas encore commencé
+    => partie qui est terminée
+    => cases qui ont déjà été jouées
+=================================
+*/
+#jeu.indisponible .case {
+    cursor: not-allowed;
+}
+
+#jeu.indisponible .case:hover,
+#jeu.indisponible .case:active {
+    background-color: #f0f0f0;
+}
+
+/*
+=================================
+    Style des modes de jeu
+=================================
+*/
+#setup {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#setup .modes {
+    margin-right: 10px;
+}
+
+#setup .mode {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#setup .mode label {
+    font-size: 1.1em;
+}
+
+#setup .buttons {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+#setup .buttons button {
+    margin-left: 10px;
+    padding: 16px 32px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#setup .buttons button#start {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+}
+
+#setup .buttons button#start:hover {
+    background-color: #218838;
+}
+
+#setup .buttons button#start:active {
+    background-color: #1e7e34;
+    color: #f0f0f0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+#setup .buttons button#stop {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+#setup .buttons button#stop:hover {
+    background-color: #c82333;
+}
+
+#setup .buttons button#stop:active {
+    background-color: #bd2130;
+    color: #f0f0f0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+/*
+=================================
+    Responsive design
+=================================
+*/
+@media (max-width: 576px) {
+    #jeu .case {
+        width: 96px;
+        height: 96px;
+        font-size: 1em;
+    }
+
+    #setup .row {
+        display: block;
+    }
+
+    #setup .modes {
+        margin-right: 0;
+
+    }
+
+    #setup .buttons {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    #setup .buttons button:first-child {
+        margin-left: 0;
+    }
+
+    #setup .buttons button {
+        padding: 16px 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    #jeu .case {
+        width: 80px;
+        height: 80px;
+        font-size: 0.8em;
+    }
+
+    #setup .buttons button {
+        padding: 16px 32px;
+    }
+}
