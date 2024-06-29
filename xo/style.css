@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -19,14 +23,15 @@ h1 {
     margin: 0 10px;
 }
 
-#jeu {}
-
 /*
-=================================
-    Style de la grille de jeu
-=================================
+====================
+ Game container
+====================
 */
-#jeu .case {
+#gameContainer {
+}
+
+#gameContainer .case {
     width: 128px;
     height: 128px;
     margin: 8px;
@@ -34,59 +39,57 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 4em;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#jeu .case:hover {
+#gameContainer .case:hover {
     background-color: #e0e0e0;
 }
 
-#jeu .case:active {
+#gameContainer .case:active {
     background-color: #d0d0d0;
 }
 
 /*
-=================================
-    Style des cases actives
-    => cases qui peuvent être jouées
-=================================
+====================
+ Active case
+====================
 */
-#jeu .case.active {
+#gameContainer .case.active {
     background-color: #f0f0f0;
 }
 
-#jeu .case.active:hover,
-#jeu .case.active:active {
+#gameContainer .case.active:hover,
+#gameContainer .case.active:active {
     background-color: #f0f0f0;
 }
 
 /*
-=================================
-    Style des cases inactives
-    => partie qui n'a pas encore commencé
-    => partie qui est terminée
-    => cases qui ont déjà été jouées
-=================================
+====================
+ Stopped game case
+====================
 */
-#jeu.indisponible .case {
+#gameContainer.gameStopped .case {
     cursor: not-allowed;
 }
 
-#jeu.indisponible .case:hover,
-#jeu.indisponible .case:active {
+#gameContainer.gameStopped .case:hover,
+#gameContainer.gameStopped .case:active {
     background-color: #f0f0f0;
 }
 
 /*
-=================================
-    Style des modes de jeu
-=================================
+====================
+ Game setup
+====================
 */
 #setup {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 #setup .modes {
@@ -94,12 +97,36 @@ h1 {
 }
 
 #setup .mode {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin: 8px 0;
 }
 
 #setup .mode label {
     font-size: 1.1em;
+}
+
+#setup .mode input[type="radio"] {
+    display: none;
+}
+
+#setup .mode input[type="radio"] + label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+#setup .mode input[type="radio"] + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+}
+
+#setup .mode input[type="radio"]:checked + label::before {
+    background-color: #007bff;
 }
 
 #setup .buttons {
@@ -113,12 +140,13 @@ h1 {
     cursor: pointer;
     border-radius: 4px;
     font-size: 1em;
+    border: none;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 #setup .buttons button#start {
     background-color: #28a745;
     color: #fff;
-    border: none;
 }
 
 #setup .buttons button#start:hover {
@@ -134,7 +162,6 @@ h1 {
 #setup .buttons button#stop {
     background-color: #dc3545;
     color: #fff;
-    border: none;
 }
 
 #setup .buttons button#stop:hover {
@@ -147,30 +174,52 @@ h1 {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
+#gameContainer.gameStopped + #setup .buttons button#stop,
+#gameContainer:not(.gameStopped) + #setup .buttons button#start {
+    display: none;
+}
+
+#gameContainer.gameStarted + #setup .modes * {
+    cursor: not-allowed;
+}
+
+#gameContainer.gameStarted + #setup .modes label {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#gameContainer.gameStarted + #setup .modes input[type="radio"] + label::before {
+    border-color: rgba(0, 123, 255, 0.5);
+}
+
+#gameContainer.gameStarted + #setup .modes input[type="radio"]:checked + label::before {
+    background-color: rgba(0, 123, 255, 0.4);
+    border: 2px solid rgba(0, 123, 255, 0.1);
+}
+
 /*
-=================================
-    Responsive design
-=================================
+====================
+ Responsive design
+====================
 */
 @media (max-width: 576px) {
-    #jeu .case {
+    #gameContainer .case {
         width: 96px;
         height: 96px;
-        font-size: 1em;
     }
 
-    #setup .row {
-        display: block;
+    #setup {
+        flex-direction: column;
+        align-items: center;
     }
 
     #setup .modes {
         margin-right: 0;
-
     }
 
     #setup .buttons {
-        margin-left: 0;
-        margin-top: 20px;
+        margin-left: 20px;
+        margin-top: 15px;
+        text-align: center;
     }
 
     #setup .buttons button:first-child {
@@ -183,10 +232,10 @@ h1 {
 }
 
 @media (max-width: 400px) {
-    #jeu .case {
+    #gameContainer .case {
         width: 80px;
         height: 80px;
-        font-size: 0.8em;
+        font-size: 2em;
     }
 
     #setup .buttons button {

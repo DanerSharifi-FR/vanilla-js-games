@@ -11,7 +11,7 @@
     <!-- Author -->
     <meta name="author" content="Daner SHARIFI">
     <!-- Description -->
-    <meta name="description" content="Tic-tac-toe jeu de réflexion.">
+    <meta name="description" content="Tic Tac Toe is a two-player game in which the objective is to take turns and mark the correct spaces in a 3x3 grid.">
     <!-- Robots -->
     <meta name="robots" content="index, follow">
     <!-- Favicon -->
@@ -22,38 +22,38 @@
 <body>
 <div class="container">
     <h1>Tic-tac-toe</h1>
-    <div id="jeu" class="indisponible">
+    <div id="gameContainer" class="gameStopped">
         <div class="row">
-            <div class="case" id="case1"></div>
-            <div class="case" id="case2"></div>
-            <div class="case" id="case3"></div>
+            <div class="case" data-case="0"></div>
+            <div class="case" data-case="1"></div>
+            <div class="case" data-case="2"></div>
         </div>
         <div class="row">
-            <div class="case" id="case4"></div>
-            <div class="case" id="case5"></div>
-            <div class="case" id="case6"></div>
+            <div class="case" data-case="3"></div>
+            <div class="case" data-case="4"></div>
+            <div class="case" data-case="5"></div>
         </div>
         <div class="row">
-            <div class="case" id="case7"></div>
-            <div class="case" id="case8"></div>
-            <div class="case" id="case9"></div>
+            <div class="case" data-case="6"></div>
+            <div class="case" data-case="7"></div>
+            <div class="case" data-case="8"></div>
         </div>
     </div>
     <div id="setup">
         <div class="row">
             <div class="modes">
                 <div class="mode">
-                    <input type="radio" name="mode" id="modeOrdinateur" value="1" checked>
-                    <label for="modeOrdinateur">Jouer contre l'ordinateur</label>
+                    <input type="radio" name="mode" id="pcMode" value="computer" checked>
+                    <label for="pcMode">Play against your PC</label>
                 </div>
                 <div class="mode">
-                    <input type="radio" name="mode" id="modeEnLigne" value="2">
-                    <label for="modeEnLigne">Jouer en ligne</label>
+                    <input type="radio" name="mode" id="onlineMode" value="online">
+                    <label for="onlineMode">Play online</label>
                 </div>
             </div>
             <div class="buttons">
-                <button id="start">Commencer</button>
-                <button id="stop">Arrêter</button>
+                <button type="button" id="start">Play</button>
+                <button type="button" id="stop">Surrender</button>
             </div>
         </div>
     </div>
